@@ -224,7 +224,7 @@ function renderGallery(){
     button.setAttribute('aria-label',`Abrir ${photo.type==='video'?'video':'foto'} ${index+1}: ${photo.alt}`);
     const img=document.createElement(photo.type==='video'?'video':'img');
     if(photo.type==='video'){
-      img.preload='none';img.muted=true;img.playsInline=true;
+      img.preload='metadata';img.muted=true;img.playsInline=true;
       const badge=document.createElement('span');badge.className='gallery-video-badge';badge.textContent='▶ Video';button.append(badge);
     }else{img.alt=photo.alt;img.loading='lazy';img.decoding='async';}
     img.src=photo.thumbnail||photo.src;

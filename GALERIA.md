@@ -1,5 +1,13 @@
 # Fotos y videos de la invitación
 
+## Optimizar las fotos
+
+Desde esta carpeta ejecuta `python3 optimizar-media.py`. Requiere `sips` (macOS) y `cwebp` (instalable con `brew install webp`). Conserva los originales en `assets/fotos/` y genera fotos WebP de hasta 1600 píxeles y miniaturas de hasta 480 píxeles en `assets/optimizado/`. El catálogo utiliza automáticamente estas versiones cuando están actualizadas. Al agregar o cambiar fotos, vuelve a ejecutar el comando.
+
+Publica también `assets/optimizado/`, `assets/galeria.js` y `FIESTA18.js` junto con el resto del sitio.
+
+Los videos aún requieren compresión aparte. En HandBrake puedes usar el preset Fast 720p30, formato MP4 y activar Web Optimized. Guarda una copia de los originales fuera de `assets/fotos/`, coloca los MP4 comprimidos en esa carpeta y ejecuta `python3 actualizar-fotos.py`.
+
 1. Guarda las imágenes y los videos en `assets/fotos/`. Puedes usar cualquier nombre y subcarpetas.
 2. Se admiten JPG, JPEG, PNG, WebP, AVIF y GIF, además de videos MP4 con sonido. Se muestran por nombre.
 
