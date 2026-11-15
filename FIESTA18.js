@@ -198,14 +198,28 @@ const P = (()=>{
 const galleryPage = $('#galleryPage');
 let galleryPhotos = [], photoIndex = 0, galleryScroll = 0;
 let carouselTimer=null, carouselPlaying=false;
+function watchGalleryVideo(){
+  if(carouselPlaying && galleryPhotos.length>1 && !document.hidden && !$('#galleryVideo').hidden){
+    clearTimeout(carouselTimer);
+    carouselTimer=setTimeout(()=>movePhoto(1),15000);
+  }
+}
+function playGalleryVideo(){
+  const video=$('#galleryVideo');
+  if(video.hidden || !carouselPlaying || document.hidden)return;
+  watchGalleryVideo();
+  // Sin sonido permite reproducción automática también en móviles.
+  video.muted=true;
+  video.play().catch(()=>{if(!video.hidden)watchGalleryVideo();});
+}
 function stopCarousel(){clearTimeout(carouselTimer);carouselTimer=null;carouselPlaying=false;updateCarouselButton();}
 function updateCarouselButton(){
   $('#carouselToggle').textContent=carouselPlaying?'Pausar':'Continuar';
   $('#carouselToggle').setAttribute('aria-pressed',String(carouselPlaying));
 }
 function scheduleCarousel(){
-  clearTimeout(carouselTimer);
   if(carouselPlaying && galleryPhotos.length>1 && !document.hidden && !$('#galleryFull').hidden){
+    clearTimeout(carouselTimer);
     carouselTimer=setTimeout(()=>movePhoto(1),500);
   }
 }
@@ -222,12 +236,13 @@ function renderGallery(){
     const button=document.createElement('button');
     button.type='button';button.className='gallery-tile';
     button.setAttribute('aria-label',`Abrir ${photo.type==='video'?'video':'foto'} ${index+1}: ${photo.alt}`);
-    const img=document.createElement(photo.type==='video'?'video':'img');
+    const img=document.createElement(photo.type==='video'&&!photo.poster?'video':'img');
     if(photo.type==='video'){
-      img.preload='metadata';img.muted=true;img.playsInline=true;
+      if(photo.poster){img.alt=photo.alt;img.loading='lazy';img.decoding='async';}
+      else{img.preload='metadata';img.muted=true;img.playsInline=true;}
       const badge=document.createElement('span');badge.className='gallery-video-badge';badge.textContent='▶ Video';button.append(badge);
     }else{img.alt=photo.alt;img.loading='lazy';img.decoding='async';}
-    img.src=photo.thumbnail||photo.src;
+    img.src=photo.poster||photo.thumbnail||photo.src;
     img.addEventListener('error',()=>{
       button.hidden=true;
       if(!$('#galleryGrid').querySelector('.gallery-tile:not([hidden])')) $('#galleryEmpty').hidden=false;
@@ -244,8 +259,10 @@ function showGalleryPhoto(){
   video.pause();video.removeAttribute('src');video.load();
   video.hidden=!isVideo;image.hidden=isVideo;
   if(isVideo){
+    if(photo.poster)video.poster=photo.poster;else video.removeAttribute('poster');
     image.removeAttribute('src');video.src=photo.src;video.muted=false;
     video.setAttribute('aria-label',photo.alt);
+    playGalleryVideo();
   }else{image.src=photo.src;image.alt=photo.alt;if(image.complete)scheduleCarousel();}
   $('#photoCount').textContent=`${photoIndex+1} / ${galleryPhotos.length}`;
   $('#photoPrev').disabled=$('#photoNext').disabled=galleryPhotos.length<2;
@@ -291,14 +308,18 @@ $('#galleryFull').addEventListener('touchend',e=>{
 },{passive:true});
 
 $('#galleryVideo').addEventListener('play',()=>P.pause());
+$('#galleryVideo').addEventListener('timeupdate',watchGalleryVideo);
+$('#galleryVideo').addEventListener('waiting',watchGalleryVideo);
+$('#galleryVideo').addEventListener('error',watchGalleryVideo);
 
 $('#galleryFull').addEventListener('load',scheduleCarousel);
 $('#galleryFull').addEventListener('error',scheduleCarousel);
 $('#galleryVideo').addEventListener('ended',()=>{if(carouselPlaying)movePhoto(1);});
 $('#carouselToggle').addEventListener('click',()=>{
   if(carouselPlaying){stopCarousel();$('#galleryVideo').pause();}
-  else{carouselPlaying=true;updateCarouselButton();scheduleCarousel();}
+  else{carouselPlaying=true;updateCarouselButton();if(!$('#galleryVideo').hidden)playGalleryVideo();else scheduleCarousel();}
 });
 document.addEventListener('visibilitychange',()=>{
-  if(document.hidden)clearTimeout(carouselTimer);else scheduleCarousel();
+  if(document.hidden){clearTimeout(carouselTimer);$('#galleryVideo').pause();}
+  else if(!$('#galleryVideo').hidden)playGalleryVideo();else scheduleCarousel();
 });

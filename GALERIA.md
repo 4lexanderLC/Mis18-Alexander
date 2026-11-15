@@ -2,6 +2,8 @@
 
 ## Optimizar las fotos
 
+Si ya generaste versiones con orientación incorrecta, ejecuta `python3 optimizar-media.py --force` para regenerarlas conservando EXIF. Los videos del carrusel se reproducen automáticamente sin sonido (puedes activarlo en los controles), avanzan al terminar y se saltan después de 15 segundos sin progreso si no pueden cargar.
+
 Desde esta carpeta ejecuta `python3 optimizar-media.py`. Requiere `sips` (macOS) y `cwebp` (instalable con `brew install webp`). Conserva los originales en `assets/fotos/` y genera fotos WebP de hasta 1600 píxeles y miniaturas de hasta 480 píxeles en `assets/optimizado/`. El catálogo utiliza automáticamente estas versiones cuando están actualizadas. Al agregar o cambiar fotos, vuelve a ejecutar el comando.
 
 Publica también `assets/optimizado/`, `assets/galeria.js` y `FIESTA18.js` junto con el resto del sitio.
@@ -34,6 +36,15 @@ Sube `FIESTA18.html`, `FIESTA18.css`, `FIESTA18.js` y la carpeta `assets` comple
 La galería muestra dos columnas en celulares, permite ampliar fotos y pasar a la siguiente deslizando horizontalmente o usando las flechas. Si no hay fotos, muestra un mensaje. Usa imágenes comprimidas para que carguen rápido con datos móviles. Las fotos publicadas estarán disponibles para quienes puedan acceder al sitio.
 
 ## Agregar un video con sonido
+
+Las miniaturas de video usan una imagen JPG de `assets/portadas/` con el mismo nombre base que el video. Publica también esta carpeta. Para generar una portada en macOS, ejecuta, por ejemplo:
+
+```sh
+swift portadas-video.swift assets/fotos/18FIESTA.mp4 assets/portadas/18FIESTA.jpg
+python3 actualizar-fotos.py
+```
+
+Esto evita que las miniaturas dependan de que el navegador descargue y dibuje el primer fotograma del video.
 
 1. Copia tu archivo `.mp4` a `assets/fotos/`, junto con las fotos.
 2. Ejecuta `python3 actualizar-fotos.py` (o usa el servidor automático indicado arriba).

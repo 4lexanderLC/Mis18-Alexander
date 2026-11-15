@@ -16,6 +16,9 @@ def update():
     files = sorted((p for p in PHOTOS.rglob('*') if p.is_file() and p.suffix.lower() in EXTENSIONS), key=lambda p: str(p.relative_to(PHOTOS)).casefold())
     photos = [{'src': quote(p.relative_to(ROOT).as_posix(), safe='/'), 'type': 'video' if p.suffix.lower() == '.mp4' else 'image', 'alt': p.stem.replace('_', ' ').replace('-', ' ')} for p in files]
     for photo, original in zip(photos, files):
+        poster = ROOT / 'assets' / 'portadas' / original.relative_to(PHOTOS).with_suffix('.jpg')
+        if photo['type'] == 'video' and poster.exists():
+            photo['poster'] = quote(poster.relative_to(ROOT).as_posix(), safe='/')
         for folder, key in [('fotos', 'src'), ('miniaturas', 'thumbnail')]:
             optimized = ROOT / 'assets' / 'optimizado' / folder / original.relative_to(PHOTOS).with_suffix(original.suffix + '.webp')
             if optimized.exists() and optimized.stat().st_mtime >= original.stat().st_mtime:
