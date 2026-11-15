@@ -1,12 +1,12 @@
 /* ===== CONFIGURACIÓN: cambia aquí tus datos ===== */
 const CONFIG = {
-  celebrant: "Alexander LC",
-  parents: ["Angélica Carvajal Rosales", "Carlos Fernando López"],
+  celebrant: "Alex LC",
+  parents: ["Angie Carvajal Rosales", "Carlos Fernando López"],
 eventISO: "2027-01-09T15:00:00-06:00",
 eventEndISO: "2027-01-09T22:00:00-06:00",
   eventTitle: "18 años de Alexander",
   eventPlace: "Terraza D'Lucy, Tónala ",
-  partyTime: "7:00 pm",
+  partyTime: "3:00 pm- 10:00 pm",
   city: "Tónala",
   guest: "Invitado",
   whatsapp: "3314137425",
@@ -201,7 +201,7 @@ let carouselTimer=null, carouselPlaying=false;
 function watchGalleryVideo(){
   if(carouselPlaying && galleryPhotos.length>1 && !document.hidden && !$('#galleryVideo').hidden){
     clearTimeout(carouselTimer);
-    carouselTimer=setTimeout(()=>movePhoto(1),15000);
+    carouselTimer=setTimeout(()=>movePhoto(1),1000);
   }
 }
 function playGalleryVideo(){
@@ -220,7 +220,7 @@ function updateCarouselButton(){
 function scheduleCarousel(){
   if(carouselPlaying && galleryPhotos.length>1 && !document.hidden && !$('#galleryFull').hidden){
     clearTimeout(carouselTimer);
-    carouselTimer=setTimeout(()=>movePhoto(1),500);
+    carouselTimer=setTimeout(()=>movePhoto(1),400);
   }
 }
 function startGalleryCarousel(index=0){
