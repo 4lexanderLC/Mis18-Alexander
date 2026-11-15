@@ -50,6 +50,6 @@ Esto evita que las miniaturas dependan de que el navegador descargue y dibuje el
 2. Ejecuta `python3 actualizar-fotos.py` (o usa el servidor automático indicado arriba).
 3. Abre «Ver galería», toca la miniatura marcada «Video» y pulsa reproducir. El visor incluye controles de sonido y pantalla completa según el navegador.
 
-Al reproducir un video se pausa la música de la invitación. Al cerrar el visor o cambiar de elemento se pausa el video. Exporta los MP4 con video H.264 y audio AAC para mayor compatibilidad y comprímelos antes de subirlos.
+La música de la invitación continúa al reproducir videos. Los videos del carrusel comienzan sin sonido; puedes activarlo desde sus controles. Al cerrar el visor o cambiar de elemento se pausa el video. Exporta los MP4 con video H.264 y audio AAC para mayor compatibilidad y comprímelos antes de subirlos.
 
 Al entrar a «Ver galería» se abre el carrusel: cada foto permanece 2 segundos después de cargar y al llegar al final vuelve al inicio. Puedes pausar o continuar y usar las flechas. Los videos se reproducen con sus controles y avanzan al terminar.

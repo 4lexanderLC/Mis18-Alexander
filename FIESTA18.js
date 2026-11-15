@@ -307,7 +307,6 @@ $('#galleryFull').addEventListener('touchend',e=>{
   touchStart=null;
 },{passive:true});
 
-$('#galleryVideo').addEventListener('play',()=>P.pause());
 $('#galleryVideo').addEventListener('timeupdate',watchGalleryVideo);
 $('#galleryVideo').addEventListener('waiting',watchGalleryVideo);
 $('#galleryVideo').addEventListener('error',watchGalleryVideo);
