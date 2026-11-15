@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mis 18 años Alexander</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Display:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="FIESTA18.css">
+</head>
+<body>
+
+<!-- Recursos SVG -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="paper" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" result="n"/>
+      <feColorMatrix in="n" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 -.15"/>
+    </filter>
+    <radialGradient id="wax" cx="35%" cy="30%" r="80%">
+      <stop offset="0" stop-color="#F2F4F8"/><stop offset=".55" stop-color="#C0C7D1"/><stop offset="1" stop-color="#9AA3B2"/>
+    </radialGradient>
+
+    <!-- Sobre abierto: fondo y frente -->
+    <symbol id="env-back" viewBox="0 0 360 300">
+      <polygon points="0,112 360,112 180,6" fill="var(--navy-2)"/>
+      <polygon points="0,112 360,112 180,6" fill="var(--black)" opacity=".12"/>
+      <rect y="110" width="360" height="190" fill="var(--navy)"/>
+      <rect y="110" width="360" height="190" filter="url(#paper)" opacity=".5"/>
+    </symbol>
+    <symbol id="env-front" viewBox="0 0 360 300">
+      <polygon points="0,128 180,204 360,128 360,300 0,300" fill="var(--navy-2)"/>
+      <polygon points="0,128 180,204 360,128 360,300 0,300" filter="url(#paper)" opacity=".5"/>
+      <path d="M0 128 L180 204 L360 128" stroke="var(--black)" stroke-width="1.2" fill="none" opacity=".6"/>
+      <path d="M0 300 L150 190 M360 300 L210 190" stroke="var(--black)" stroke-width="1" opacity=".35" fill="none"/>
+    </symbol>
+    <!-- Sobre cerrado -->
+    <symbol id="env-closed" viewBox="0 0 360 250">
+      <rect width="360" height="250" fill="var(--navy)"/>
+      <rect width="360" height="250" filter="url(#paper)" opacity=".55"/>
+      <path d="M0 250 L160 120 M360 250 L200 120" stroke="var(--black)" stroke-width="1.1" opacity=".5" fill="none"/>
+      <polygon points="0,0 360,0 180,150" fill="var(--navy-2)"/>
+      <polygon points="0,0 360,0 180,150" filter="url(#paper)" opacity=".5"/>
+      <path d="M0 0 L180 150 L360 0" stroke="var(--black)" stroke-width="1.2" fill="none" opacity=".55"/>
+      <path d="M2 2 L180 148" stroke="var(--silver)" stroke-width="1" opacity=".5" fill="none"/>
+    </symbol>
+    <symbol id="seal" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="34" fill="url(#wax)"/>
+      <circle cx="40" cy="40" r="27" fill="none" stroke="#F2F4F8" stroke-opacity=".55" stroke-width="1.2"/>
+      <circle cx="40" cy="40" r="34" fill="none" stroke="#9AA3B2" stroke-opacity=".5"/>
+      <text x="40" y="49" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="16" fill="#05070F" fill-opacity=".85">18 años</text>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- PORTADA -->
+<div id="cover">
+  <div class="wrap">
+    <header class="center">
+      <h1 class="names"><span data-first-name>ALEXANDER</span><span class="metal age-number">18 años</span></h1>
+      <p class="dateline"><span data-city>Ciudad de México</span> &nbsp;|&nbsp; <span data-date>22.02.2027</span></p>
+    </header>
+
+    <div class="cover-env">
+      <div class="env" id="openBtn" role="button" tabindex="0" aria-label="Abrir invitación">
+        <div class="opening-envelope" aria-hidden="true">
+          <div class="envelope-back"></div>
+          <div class="envelope-letter"><span class="metal">18 años</span><span data-first-name>ALEXANDER</span></div>
+          <div class="envelope-pocket"></div>
+          <div class="envelope-flap"></div>
+          <div class="envelope-seal">18 años</div>
+        </div>
+      </div>
+      <div class="tag" id="tagBtn" role="button" tabindex="0">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--silver)" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V10m0-1.5a1.5 1.5 0 0 1 3 0V11m0-1a1.5 1.5 0 0 1 3 0v5c0 3-2 5.5-5.5 5.5S7 19 6 16.5L4.5 13a1.5 1.5 0 0 1 2.6-1.4L9 14"/></svg>
+        <span><b>Haz clic aquí</b>para ver tu invitación</span>
+      </div>
+    </div>
+
+    <footer class="center">
+    </footer>
+  </div>
+</div>
+
+<!-- INVITACIÓN -->
+<main class="wrap" id="invitation" tabindex="-1">
+
+  <!-- 1. Hero -->
+  <section class="center" style="padding-top:44px">
+    <div class="rv">
+      <h2 class="names"><span data-first-name>ALEXANDER</span><span class="metal age-number">18 años</span></h2>
+      <p class="dateline" data-date>22.02.2027</p>
+    </div>
+    <div class="env rv" style="margin-top:26px">
+      <svg class="layer" viewBox="0 0 360 300" aria-hidden="true"><use href="#env-back"/></svg>
+      <div class="slot">
+        <div class="card" style="height:100%;padding:7px;overflow:hidden">
+          <div class="photo-frame"><span class="metal photo-placeholder" aria-hidden="true">18 años</span><img id="heroPhoto" alt="Alexander López Carvajal" hidden></div>
+        </div>
+      </div>
+      <svg class="layer front" viewBox="0 0 360 300" aria-hidden="true"><use href="#env-front"/></svg>
+    </div>
+
+    <div class="player rv">
+      <p>Dale play para escuchar mi canción</p>
+      <div class="ctrl">
+        <button type="button" id="prev" aria-label="Reiniciar canción"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="5" width="2.4" height="14"/><path d="M19 5v14L8 12z"/></svg></button>
+        <button type="button" class="play" id="play" aria-label="Reproducir">
+          <svg id="icoPlay" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="icoPause" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+        </button>
+        <button type="button" id="next" aria-label="Adelantar canción"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="17.6" y="5" width="2.4" height="14"/><path d="M5 5v14l11-7z"/></svg></button>
+      </div>
+      <div class="bar" id="bar"><i><b id="barFill"></b><u id="barDot"></u></i></div>
+    </div>
+  </section>
+
+  <!-- 2. Tarjeta formal -->
+  <section style="padding-bottom:0">
+    <div class="card formal rv">
+      <div class="frame"></div>
+      <div class="parents" id="parents"><div>Nombre de mamá</div><div>Nombre de papá</div></div>
+      <p class="honor">Tengo el honor de invitarte a celebrar mis 18 años</p>
+      <div class="script celebrant" data-celebrant>Alexander López Carvajal</div>
+      <div class="bigdate caps" data-date>22.02.2027</div>
+    </div>
+
+    <!-- 3. Calendario -->
+    <a class="blob cal rv" id="calLink" href="#" target="_blank" rel="noopener" aria-label="Añade la fecha a tu calendario">
+      <svg class="bshape" viewBox="0 0 300 150" preserveAspectRatio="none" aria-hidden="true"><path fill="var(--navy)"/></svg>
+      <div class="in"><div class="t1">Añade la fecha a tu</div><div class="t2">Calendario</div></div>
+    </a>
+    <button class="ics" type="button" id="icsBtn">Descargar calendario .ics</button>
+  </section>
+
+  <!-- 4. Itinerario -->
+  <section class="itin">
+    <div class="stack">
+      <div class="env rv" style="position:relative">
+        <svg class="layer" viewBox="0 0 360 250" aria-hidden="true"><use href="#env-closed"/></svg>
+        <svg style="position:absolute;left:50%;top:57%;width:21%;transform:translate(-50%,-50%) rotate(-6deg);filter:drop-shadow(0 4px 4px rgba(0,0,0,.35));z-index:3" viewBox="0 0 80 80" aria-hidden="true"><use href="#seal"/></svg>
+      </div>
+
+      <div class="recep rv">
+        <h3 class="caps">Fiesta</h3>
+        <div class="time" id="partyTime">7:00 pm</div>
+        <p id="partyPlace">Salón de eventos</p>
+        <svg viewBox="0 0 100 100" fill="none" stroke="var(--silver)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <g transform="translate(36 14) rotate(-16)"><path d="M-8 0H8L6 34Q0 42 -6 34Z"/><path d="M0 40V62M-9 64H9"/><path d="M-7 14H7" opacity=".6"/></g>
+          <g transform="translate(64 14) rotate(16)"><path d="M-8 0H8L6 34Q0 42 -6 34Z"/><path d="M0 40V62M-9 64H9"/><path d="M-7 14H7" opacity=".6"/></g>
+          <path d="M50 4V-2M42 6L38 1M58 6L62 1" transform="translate(0 6)"/>
+        </svg>
+        <a class="pill small light" target="_blank" rel="noopener" id="partyMap" href="https://www.google.com/maps/search/?api=1&amp;query=Salon+de+eventos+Ciudad+de+Mexico">Ubicación</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Dress code -->
+  <section>
+    <div class="dress rv">
+      <div class="card c1">
+        <h3 class="caps">Negro / fosforescente</h3>
+        <p>Viste de negro o con colores fosforescentes. ¡Trae tu traje de baño!</p>
+      </div>
+      <div class="card c3">
+        <svg viewBox="0 0 160 220" fill="none" stroke="var(--silver)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Camiseta y traje de baño">
+          <path d="M56 24 32 36 16 68 40 80 48 64v54h64V64l8 16 24-12-16-32-24-12c-3 20-45 20-48 0Z"/>
+          <path d="M48 142h64l10 58H88l-8-28-8 28H38Z"/>
+          <path d="M48 152h64M80 143v18m0-8-10 9m10-9 10 9"/>
+        </svg>
+      </div>
+      <div class="blob lab">
+        <svg class="bshape" viewBox="0 0 300 150" preserveAspectRatio="none" aria-hidden="true"><path fill="var(--navy)"/></svg>
+        <div class="in"><div class="t2">Dress code</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Cuenta regresiva -->
+  <section class="count rv">
+    <h3 class="caps">Faltan</h3>
+    <div class="cd" role="timer" aria-live="off">
+      <div><b id="cdD">0</b><span>Días</span></div>
+      <div><b id="cdH">0</b><span>Horas</span></div>
+      <div><b id="cdM">0</b><span>Minutos</span></div>
+    </div>
+  </section>
+
+  <!-- 8. RSVP -->
+  <section class="rsvp center">
+    <div class="env rv">
+      <svg class="layer" viewBox="0 0 360 300" aria-hidden="true"><use href="#env-back"/></svg>
+      <svg class="layer front" viewBox="0 0 360 300" aria-hidden="true"><use href="#env-front"/></svg>
+      <div class="slot front card">
+        <h3 class="caps">Confirmar asistencia</h3>
+        <p>Hazme saber si podré contar contigo en este día tan especial</p>
+        <button class="pill" type="button" data-open="rsvpModal">Llena el formulario</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-invite card center rv">
+    <p class="sans">Recuerdos de mi gran noche</p>
+    <h2 class="caps">Mis fotos</h2>
+    <p>Una noche para recordar.</p>
+    <button class="pill" type="button" data-gallery-open>Ver galería</button>
+  </section>
+  <div class="foot rv">
+    <div class="script">18 años</div>
+    <p class="dateline" data-date>22.02.2027</p>
+  </div>
+</main>
+
+<section id="galleryPage" class="gallery-page wrap" aria-labelledby="galleryTitle" tabindex="-1" hidden>
+  <header class="gallery-header">
+    <button class="pill small" type="button" id="galleryBack">← Invitación</button>
+    <p class="sans">18 años · <span data-first-name>Alexander</span></p>
+  </header>
+  <div class="center gallery-heading">
+    <h1 id="galleryTitle" class="caps">Mis fotos</h1>
+    <p>Momentos que se quedan para siempre.</p>
+  </div>
+  <div id="galleryGrid" class="gallery-grid"></div>
+  <p id="galleryEmpty" class="gallery-empty center">Pronto compartiré aquí mis mejores momentos.</p>
+</section>
+
+<div class="modal photo-modal" id="photoModal" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <div class="sheet photo-sheet">
+    <button class="x" type="button" data-close aria-label="Cerrar foto">&times;</button>
+    <img id="galleryFull" alt="">
+    <div class="photo-navigation">
+      <button class="pill small" id="photoPrev" type="button" aria-label="Foto anterior">←</button>
+      <span id="photoCount" class="sans" aria-live="polite"></span>
+      <button class="pill small" id="photoNext" type="button" aria-label="Foto siguiente">→</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal RSVP -->
+<div class="modal" id="rsvpModal" role="dialog" aria-modal="true" aria-labelledby="rsvpT">
+  <div class="sheet">
+    <button class="x" type="button" data-close aria-label="Cerrar">&times;</button>
+    <h3 class="caps" id="rsvpT">Confirmar asistencia</h3>
+    <p class="sub">Cuéntame si me acompañas</p>
+    <form id="rsvpForm" novalidate>
+      <label for="fName">Nombre</label>
+      <input type="text" id="fName" autocomplete="name">
+      <span class="lbl">¿Asistirás?</span>
+      <div class="opts">
+        <label><input type="radio" name="att" value="si" checked><span>Sí, ahí estaré</span></label>
+        <label><input type="radio" name="att" value="no"><span>No podré</span></label>
+      </div>
+      <label for="fMsg">Mensaje para <span data-first-name>Alexander</span></label>
+      <textarea id="fMsg"></textarea>
+      <div class="actions"><button class="pill dark" type="submit">Enviar respuesta</button></div>
+    </form>
+    <div id="rsvpDone" hidden>
+      <p class="sub" id="doneTxt"></p>
+      <div class="data" id="doneMsg"></div>
+      <div class="actions">
+        <a class="pill dark" id="waLink" target="_blank" rel="noopener" href="#" hidden>Enviar por WhatsApp</a>
+        <button class="pill" type="button" id="copyMsg">Copiar mensaje</button>
+      </div>
+      <p class="note">Tu respuesta llega a <span data-first-name>Alexander</span> cuando la envías por WhatsApp o se la compartes.</p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="assets/galeria.js"></script>
+<script src="FIESTA18.js?v=apertura-2"></script>
+</body>
+</html>
