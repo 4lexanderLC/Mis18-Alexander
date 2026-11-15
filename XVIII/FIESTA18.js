@@ -9,7 +9,6 @@ eventEndISO: "2027-01-09T22:00:00-06:00",
   partyTime: "7:00 pm",
   city: "Tónala",
   guest: "Invitado",
-  seats: 6,
   whatsapp: "3314137425",
   photoSrc: "assets/foto.jpg",
   audioSrc: "assets/cancion.mp3",
@@ -78,10 +77,7 @@ if(CONFIG.photoSrc) photo.src=CONFIG.photoSrc;
 /* Invitado */
 const guestName = $('#guestName');
 if (guestName) guestName.textContent = CONFIG.guest;
-const seatsLabel = $('#seats');
-if (seatsLabel) seatsLabel.textContent = CONFIG.seats;
 $('#fName').value = CONFIG.guest;
-$('#fPass').innerHTML = Array.from({length:CONFIG.seats},(_,i)=>`<option value="${i+1}"${i===0?' selected':''}>${i+1}</option>`).join('');
 
 /* Formas orgánicas (nubes) */
 function blob(path){
@@ -135,12 +131,11 @@ addEventListener('keydown',e=>{ if(e.key==='Escape') closeModals(); });
 
 /* RSVP */
 const attEls = $$('input[name=att]');
-attEls.forEach(r=>r.addEventListener('change',()=>{ $('#passWrap').style.display = attEls.find(x=>x.checked).value==='si'?'':'none'; }));
 let rsvpText='';
 $('#rsvpForm').addEventListener('submit',e=>{
   e.preventDefault();
   const name=$('#fName').value.trim()||CONFIG.guest, yes=attEls.find(x=>x.checked).value==='si', msg=$('#fMsg').value.trim();
-  rsvpText = `Hola, soy ${name}. ` + (yes ? `Confirmo mi asistencia a la fiesta de 18 años de ${CONFIG.celebrant} (${$('#fPass').value} pase(s)).` : `Lamentablemente no podré asistir a la fiesta de 18 años de ${CONFIG.celebrant}.`) + (msg?` Mensaje: ${msg}`:'');
+  rsvpText = `Hola, soy ${name}. ` + (yes ? `Confirmo mi asistencia a la fiesta de 18 años de ${CONFIG.celebrant}.` : `Lamentablemente no podré asistir a la fiesta de 18 años de ${CONFIG.celebrant}.`) + (msg?` Mensaje: ${msg}`:'');
   $('#rsvpForm').hidden=true; $('#rsvpDone').hidden=false;
   $('#doneTxt').textContent = yes ? '¡Gracias! Ya casi está listo' : 'Gracias por avisarnos';
   $('#doneMsg').textContent = rsvpText;
